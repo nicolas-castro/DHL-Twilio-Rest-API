@@ -2,9 +2,10 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const profileSchema = new Schema({
-  campus: { type: String, required: true },
-  coarse: { type: String, required: true },
-  imageUrl: { type: String, required: true },
+  campus: { type: String, },
+  coarse: { type: String,  },
+  imageUrl: { type: String, },
+  owner: {type: Schema.Types.ObjectId, ref: 'User'}
 }, 
 {
   timestamps: true
