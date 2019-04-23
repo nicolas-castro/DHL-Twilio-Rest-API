@@ -66,7 +66,7 @@ app.locals.title = 'DHL Express - Twilio Rest API';
 
 app.use(cors({
   credentials: true,
-  origin: ['http://localhost:5000'] 
+  origin: ['http://localhost:3000'] 
 }));
 
 
