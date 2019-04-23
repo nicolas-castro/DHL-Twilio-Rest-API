@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const profileSchema = new Schema({
-  campus: { type: String, },
-  coarse: { type: String,  },
+  iata: { type: String, },
+  adress: { type: String,  },
   imageUrl: { type: String, },
   owner: {type: Schema.Types.ObjectId, ref: 'User'}
 }, 

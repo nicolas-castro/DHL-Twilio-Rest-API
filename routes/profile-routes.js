@@ -20,8 +20,8 @@ router.post('/profile/create', (req, res, next) => {
     const {campus, coarse, imageUrl} = req.body
 
     Profile.create({
-        campus,
-        coarse,
+        iata,
+        adress,
         imageUrl,
         owner: req.user._id
     })

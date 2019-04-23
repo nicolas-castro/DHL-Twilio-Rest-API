@@ -15,7 +15,7 @@ const passport      = require('passport');
 require('./configs/passport');
 
 mongoose
-  .connect('mongodb://localhost/lab-profile-rest-api', {useNewUrlParser: true})
+.connect(process.env.MONGODB_URI, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -51,7 +51,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 //Sessions start here
 
 app.use(session({
-  secret:"qwerty",
+  secret: process.env.SESSION_SECRET,
   resave: true,
   saveUninitialized: true
 }));
@@ -62,11 +62,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // default value for title local
-app.locals.title = 'Express - Profile Rest API';
+app.locals.title = 'DHL Express - Twilio Rest API';
 
 app.use(cors({
   credentials: true,
-  origin: ['http://localhost:3000'] 
+  origin: ['http://localhost:5000'] 
 }));
 
 
