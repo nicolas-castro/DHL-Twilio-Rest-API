@@ -9,8 +9,10 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 const cors         = require("cors");
-const session       = require('express-session');
-const passport      = require('passport');
+const session      = require('express-session');
+const passport     = require('passport');
+const twilio       = require('twilio')
+
 
 require('./configs/passport');
 
@@ -72,7 +74,11 @@ app.use(cors({
 
 app.use('/', require('./routes/index'));
 app.use('/api', require('./routes/file-upload-routes'));
-app.use('/api', require('./routes/profile-routes'))
-app.use('/api', require('./routes/auth-routes'))
+app.use('/api', require('./routes/profile-routes'));
+app.use('/api', require('./routes/auth-routes'));
+app.use('/api', require('./routes/incoming-calls'));
+app.use('/', require('./routes/outbound-calls'));
+
+
 
 module.exports = app;
