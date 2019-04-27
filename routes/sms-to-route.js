@@ -2,8 +2,6 @@ const express = require('express');
 const router  = express.Router();
 const accountSid = process.env.accountSid;
 const authToken = process.env.authToken;
-const SMSTo  = require('../models/sms-out-model');
-
 
 const client = require('twilio')(accountSid, authToken);
 
@@ -16,9 +14,10 @@ router.post('/sms/out', (req, res, next) => {
      from,
      body,
    })
-   .then( (message, NewSMSOut) => {
-    console.log(message.sid);
-    res.status(200).json(NewSMSOut);
+   .then( message => {
+    console.log(message.body);
+    console.log(message.to);
+    res.status(200).json(message);
     })
   .catch( err => next(err) )
   })

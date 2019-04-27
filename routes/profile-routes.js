@@ -17,7 +17,7 @@ router.post('/profile/create', (req, res, next) => {
     // console.log('body: ', req.body); ==> here we can see that all
     // the fields have the same names as the ones in the model so we can simply pass
     // req.body to the .create() method
-    const {campus, coarse, imageUrl} = req.body
+    const {iata, adress, imageUrl} = req.body
 
     Profile.create({
         iata,

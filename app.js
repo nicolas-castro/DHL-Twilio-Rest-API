@@ -79,6 +79,7 @@ app.use('/api', require('./routes/auth-routes'));
 app.use('/api', require('./routes/incoming-calls'));
 app.use('/api', require('./routes/outbound-calls'));
 app.use('/api', require('./routes/sms-to-route'));
+app.use('/api', require('./routes/sms-from-route'));
 
 
 

@@ -15,7 +15,11 @@ router.post(`/https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Calls.jso
           to: process.env.MY_PHONE_NUMBER,
           from: '+19542660506'
         })
-        .then(call => console.log(call.sid));
+        .then( call => {
+          console.log(call.body);
+          res.status(200).json(call);
+          })
+        .catch( err => next(err) )
 })
 
 module.exports = router;
