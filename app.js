@@ -77,7 +77,8 @@ app.use('/api', require('./routes/file-upload-routes'));
 app.use('/api', require('./routes/profile-routes'));
 app.use('/api', require('./routes/auth-routes'));
 app.use('/api', require('./routes/incoming-calls'));
-app.use('/', require('./routes/outbound-calls'));
+app.use('/api', require('./routes/outbound-calls'));
+app.use('/api', require('./routes/sms-to-route'));
 
 
 
