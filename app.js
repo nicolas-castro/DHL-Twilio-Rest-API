@@ -11,7 +11,7 @@ const path         = require('path');
 const cors         = require("cors");
 const session      = require('express-session');
 const passport     = require('passport');
-const twilio       = require('twilio')
+const http         = require('http');
 
 
 require('./configs/passport');
@@ -80,6 +80,7 @@ app.use('/api', require('./routes/incoming-calls'));
 app.use('/api', require('./routes/outbound-calls'));
 app.use('/api', require('./routes/sms-to-route'));
 app.use('/api', require('./routes/sms-from-route'));
+app.use('/api', require('./routes/events'));
 
 
 

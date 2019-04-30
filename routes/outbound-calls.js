@@ -1,25 +1,30 @@
 const express = require('express');
 const router  = express.Router();
-const accountSid = process.env.accountSid;
+const CallerID = process.env.TWILIO_NUMBER
+const VoiceResponse = require('twilio').twiml.VoiceResponse;
 
 
-router.post(`/https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Calls.json`, (req, res, next) => {
-  console.log('here = == = = = = = =');
+router.post('/voiceout', (req, res, next) => {
   const accountSid = process.env.accountSid;
   const authToken = process.env.authToken;
   const client = require('twilio')(accountSid, authToken);
 
   client.calls
         .create({
-          url: 'http://demo.twilio.com/docs/voice.xml',
+          url: `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Calls.json`,
+          callerId: CallerID,          
           to: process.env.MY_PHONE_NUMBER,
-          from: '+19542660506'
+          from: process.env.TWILIO_NUMBER,
+          statusCallback: 'https://767b3040.ngrok.io/api/events',
+          statusCallbackMethod: 'POST',
+          statusCallbackEvent: ['initiated', 'ringing', 'answered', 'completed'],
         })
         .then( call => {
           console.log(call.body);
           res.status(200).json(call);
           })
         .catch( err => next(err) )
+
 })
 
 module.exports = router;
