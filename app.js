@@ -74,7 +74,7 @@ app.use(cors({
 
 app.use('/', require('./routes/index'));
 app.use('/api', require('./routes/file-upload-routes'));
-app.use('/api', require('./routes/profile-routes'));
+app.use('/api', require('./routes/contacts-routes'));
 app.use('/api', require('./routes/auth-routes'));
 app.use('/api', require('./routes/incoming-calls'));
 app.use('/api', require('./routes/outbound-calls'));
