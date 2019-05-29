@@ -11,7 +11,7 @@ router.post('/sms/out', (req, res, next) => {
   client.messages
   .create({
      to,
-     from,
+     from: process.env.TWILIO_NUMBER,
      body,
    })
    .then( message => {
